@@ -1,0 +1,8 @@
+---
+title: "Website"
+---
+
+The average temperature over time.
+
+![](images/average_temp.png)
+
