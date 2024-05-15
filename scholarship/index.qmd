@@ -1,0 +1,98 @@
+---
+title: "Insights"
+execute:
+  echo: false
+format: 
+    html:
+        embed-resources: true
+---
+
+## Introduction
+
+
+### The Rise in Temperature
+The average temperature over time.
+
+![](images/average_temp.png)
+
+### Decrease in Frost Days 
+
+![](images/frost_days.png)
+
+
+### Decrease in Shrubs, Plant Litter, and Herbs
+
+![](images/plant_decrease.png)
+
+### Shrubs in 1980
+
+```{python}
+#| echo: false
+#| warning: false
+import pandas as pd
+import folium
+import matplotlib as plt
+import matplotlib
+import requests 
+import ssl
+_create_unverified_https_context = ssl._create_unverified_context
+ssl._create_default_https_context = _create_unverified_https_context
+import numpy as np
+
+historic_df = pd.read_csv('../data/NABR_historic.csv') 
+recent_df = pd.read_csv('../data/nearterm_data_2020-2024.csv') 
+
+df_1980 = historic_df[historic_df['year'] == 1980]
+
+cmap = plt.colormaps['Greens']
+
+norm = matplotlib.colors.Normalize(vmin=historic_df['Shrub'].min(), vmax=historic_df['Shrub'].max())
+
+df_1980['color'] = df_1980['Shrub'].apply(lambda x: cmap(norm(x)))
+
+def rgba_to_hex(rgba):
+    return '#' + ''.join([f'{int(255 * c):02x}' for c in rgba[:3]])
+
+df_1980['color'] = df_1980['color'].apply(rgba_to_hex)
+
+state_geo = requests.get(
+    "https://raw.githubusercontent.com/python-visualization/folium-example-data/main/us_states.json"
+).json()
+state_data = pd.read_csv(
+    "https://raw.githubusercontent.com/python-visualization/folium-example-data/main/us_unemployment_oct_2012.csv"
+)
+
+m = folium.Map(location=[37.608507, -110.005518], zoom_start=12.5)
+
+
+for i in range(df_1980.shape[0]):
+    if not np.isnan(df_1980.iloc[i].Shrub):
+      folium.CircleMarker(location=[df_1980.iloc[i].lat,df_1980.iloc[i].long], radius= 8,
+                        color=df_1980.iloc[i].color, fill_color = df_1980.iloc[i].color,
+                        fill = True, fill_opacity=0.7, tooltip=df_1980.iloc[i].Shrub).add_to(m)
+m
+```
+
+<!-- ```{python}
+#| warning: false
+df_2023 = recent_df[recent_df['year'] == 2023]
+df_2023['color'] = df_2023['Shrub'].apply(lambda x: cmap(norm(x)))
+
+df_2023['color'] = df_2023['color'].apply(rgba_to_hex)
+
+m = folium.Map(location=[37.608507, -110.005518], zoom_start=12.5)
+
+for i in range(df_2023.shape[0]):
+    if not np.isnan(df_2023.iloc[i].Shrub):
+      folium.CircleMarker(location=[df_2023.iloc[i].lat,df_2023.iloc[i].long], radius= 8,
+                        color=df_2023.iloc[i].color, fill_color = df_2023.iloc[i].color,
+                        fill = True, fill_opacity=0.7, tooltip=df_2023.iloc[i].Shrub).add_to(m)
+
+m
+``` -->
+
+### Increase in Bare Land
+
+![](images/bare.png)
+
+
