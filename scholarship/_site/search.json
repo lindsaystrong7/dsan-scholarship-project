@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Insights",
     "section": "",
-    "text": "The average temperature over time.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
+    "text": "long\nlat\nyear\nTimePeriod\nRCP\nscenario\ntreecanopy\nAnn_Herb\nBare\nHerb\n...\nPPT_Annual\nT_Winter\nT_Summer\nT_Annual\nTmax_Summer\nTmin_Winter\nVWC_Winter_whole\nVWC_Spring_whole\nVWC_Summer_whole\nVWC_Fall_whole\n\n\n\n\n0\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n...\n13.79\n0.964835\n23.15924\n23.159240\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n1\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n...\n2.69\n0.964835\n23.15924\n0.964835\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n2\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n...\n13.79\n0.964835\n23.15924\n0.964835\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n3\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n...\n2.69\n0.964835\n23.15924\n23.159240\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n...\nNaN\nNaN\nNaN\nNaN\nNaN\n-12.45\n0.113447\n0.096831\n0.041876\n0.052298\n\n\n\n\n5 rows × 29 columns\n\n\n\n\n\n\n\nThe average temperature over time.\n\n\n\n\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\n\n\n\n\n\nDemonstration of vegetation resilience."
   },
   {
     "objectID": "about.html",
@@ -18,6 +18,34 @@
     "href": "index.html#introduction",
     "title": "Insights",
     "section": "",
-    "text": "The average temperature over time.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
+    "text": "long\nlat\nyear\nTimePeriod\nRCP\nscenario\ntreecanopy\nAnn_Herb\nBare\nHerb\n...\nPPT_Annual\nT_Winter\nT_Summer\nT_Annual\nTmax_Summer\nTmin_Winter\nVWC_Winter_whole\nVWC_Spring_whole\nVWC_Summer_whole\nVWC_Fall_whole\n\n\n\n\n0\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n...\n13.79\n0.964835\n23.15924\n23.159240\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n1\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n...\n2.69\n0.964835\n23.15924\n0.964835\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n2\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n...\n13.79\n0.964835\n23.15924\n0.964835\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n3\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n...\n2.69\n0.964835\n23.15924\n23.159240\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n...\nNaN\nNaN\nNaN\nNaN\nNaN\n-12.45\n0.113447\n0.096831\n0.041876\n0.052298\n\n\n\n\n5 rows × 29 columns\n\n\n\n\n\n\n\nThe average temperature over time.\n\n\n\n\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                \n\n\n\n\n\n\n\n\n\n\nDemonstration of vegetation resilience."
+  },
+  {
+    "objectID": "index.html#data",
+    "href": "index.html#data",
+    "title": "Climate Analysis and Recommendations in Southeastern Utah National Parks",
+    "section": "Data",
+    "text": "Data\n\n\nHistoric Data\n\n\n\n\n\n\n\n\n\n\nlong\nlat\nyear\nTimePeriod\nRCP\nscenario\ntreecanopy\nAnn_Herb\nBare\nHerb\nLitter\nShrub\nDrySoilDays_Summer_whole\nEvap_Summer\nExtremeShortTermDryStress_Summer_whole\nFrostDays_Winter\nNonDrySWA_Summer_whole\nPPT_Winter\nPPT_Summer\nPPT_Annual\nT_Winter\nT_Summer\nT_Annual\nTmax_Summer\nTmin_Winter\nVWC_Winter_whole\nVWC_Spring_whole\nVWC_Summer_whole\nVWC_Fall_whole\n\n\n\n\n0\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n11\n7\nNaN\nNaN\nNaN\nNaN\nNaN\n13.79\n2.69\n13.79\n0.964835\n23.15924\n23.159240\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n1\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n11\n7\nNaN\nNaN\nNaN\nNaN\nNaN\n13.79\n2.69\n2.69\n0.964835\n23.15924\n0.964835\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n2\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n11\n7\nNaN\nNaN\nNaN\nNaN\nNaN\n13.79\n2.69\n13.79\n0.964835\n23.15924\n0.964835\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n3\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n11\n7\nNaN\nNaN\nNaN\nNaN\nNaN\n13.79\n2.69\n2.69\n0.964835\n23.15924\n23.159240\n37.05\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\n-110.0472\n37.60413\n1980\nHist\nhistorical\nsc1\n0\n0\n84\n5\n11\n7\n0.0\n1.559807\n36.16\n75.0\n0.032114\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n-12.45\n0.113447\n0.096831\n0.041876\n0.052298\n\n\n\n\n\n\n\n\n\n\nNear-Term Data\n\n\n\n\n\n\n\n\n\n\nlong\nlat\nyear\nTimePeriod\nRCP\nscenario\ntreecanopy\nAnn_Herb\nBare\nHerb\nLitter\nShrub\nDrySoilDays_Summer_whole\nEvap_Summer\nExtremeShortTermDryStress_Summer_whole\nFrostDays_Winter\nNonDrySWA_Summer_whole\nPPT_Winter\nPPT_Summer\nPPT_Annual\nT_Winter\nT_Summer\nT_Annual\nTmax_Summer\nTmin_Winter\nVWC_Winter_whole\nVWC_Spring_whole\nVWC_Summer_whole\nVWC_Fall_whole\n\n\n\n\n0\n-110.0472\n37.60413\n2021\nNT\n4.5\nsc22\n0\n0\n84\n5\n11\n7\nNaN\nNaN\nNaN\nNaN\nNaN\n5.94\n6.37\n6.37\n1.630333\n24.50402\n24.50402\n36.89\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n1\n-110.0472\n37.60413\n2021\nNT\n4.5\nsc22\n0\n0\n84\n5\n11\n7\n0.0\n3.242230\n36.314\n73.0\n0.092987\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n-12.77\n0.114652\n0.078764\n0.043514\n0.051281\n\n\n2\n-110.0472\n37.60413\n2021\nNT\n4.5\nsc23\n0\n0\n84\n5\n11\n7\nNaN\nNaN\nNaN\nNaN\nNaN\n6.44\n3.09\n3.09\n1.389056\n24.11043\n24.11043\n37.95\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n3\n-110.0472\n37.60413\n2021\nNT\n4.5\nsc23\n0\n0\n84\n5\n11\n7\n0.0\n2.401611\n36.510\n71.0\n0.000106\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n-18.96\n0.130221\n0.096412\n0.041232\n0.092241\n\n\n4\n-110.0472\n37.60413\n2021\nNT\n4.5\nsc24\n0\n0\n84\n5\n11\n7\nNaN\nNaN\nNaN\nNaN\nNaN\n5.35\n5.32\n6.87\n-0.334389\n25.54266\n10.31321\n37.74\nNaN\nNaN\nNaN\nNaN\nNaN"
+  },
+  {
+    "objectID": "index.html#insights",
+    "href": "index.html#insights",
+    "title": "Climate Analysis and Recommendations in Southeastern Utah National Parks",
+    "section": "Insights",
+    "text": "Insights\n\nThe Rise in Temperature\nThe average temperature over time.\n\n\n1980\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n2018\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n2023\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\nTemperature Over Time by Sample Location\n\n\n                                                \n\n\n\n\n\nDecrease in Frost Days\n\n\n\nDecrease in Shrubs, Plant Litter, and Herbs\n\n\nShrubs in 1980\n\n\n\nShrubs Over Time\n\n\n                                                \n\n\n\n\n\n\nIncrease in Bare Land\n\n\n\nSlight Increase in Tree Canopy\nDemonstration of vegetation resilience."
+  },
+  {
+    "objectID": "index.html#recommendations",
+    "href": "index.html#recommendations",
+    "title": "Climate Analysis and Recommendations in Southeastern Utah National Parks",
+    "section": "Recommendations",
+    "text": "Recommendations\nWatering soil if possibile. Bare land is negatively associated with Non-Dry Soil Summer Availability."
+  },
+  {
+    "objectID": "index.html#insights-and-trends",
+    "href": "index.html#insights-and-trends",
+    "title": "Climate Analysis and Recommendations in Southeastern Utah National Parks",
+    "section": "Insights and Trends",
+    "text": "Insights and Trends\n\nThe Rise in Temperature\nThe average temperature over time.\n\n\nSummer Temperature\n\n\n1980\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n2018\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\n2023\n\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook\n\n\n\n\nTemperature Over Time by Sample Location\n\n\n                                                \n\n\n\n\n\nDecrease in Frost Days\n\n\n\nDecrease in Shrubs, Plant Litter, and Herbs\n\n\nShrubs Over Time\n\n\n                                                \n\n\n\n\n\nIncrease in Bare Land\n\n\n\nBare Land Over Time\n\n\n                                                \n\n\n\nRelationship Between Bare Land and Summer Temperature\n\n\nRelationship Between Bare Land and Non-Dry Summer Soil Availability\n\n\n\nSlight Increase in Tree Canopy\nDemonstration of vegetation resilience."
   }
 ]

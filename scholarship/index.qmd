@@ -1,5 +1,5 @@
 ---
-title: "Insights"
+title: "Climate Analysis and Recommendations in Southeastern Utah National Parks"
 execute:
   echo: false
 format: 
@@ -9,11 +9,110 @@ format:
 
 ## Introduction
 
+```{python}
+import pandas as pd
+import matplotlib as plt
+import matplotlib
+import numpy as np
+import plotly.express as px
+import folium
+
+historic_df = pd.read_csv('../data/NABR_historic.csv') 
+recent_df = pd.read_csv('../data/nearterm_data_2020-2024.csv') 
+recent_df = recent_df[recent_df['year'] != 2024]
+```
+
+## Data
+
+![](images/samples.png)
+
+### Historic Data 
+```{python}
+pd.set_option('display.max_columns', None)
+historic_df.head()
+```
+
+### Near-Term Data
+```{python}
+recent_df.head()
+```
+
+## Insights and Trends
 
 ### The Rise in Temperature
 The average temperature over time.
 
 ![](images/average_temp.png)
+
+#### Summer Temperature
+
+#### 1980
+
+```{python}
+from folium.plugins import HeatMap
+df_1980 = historic_df[historic_df['year'] == 1980]
+m = folium.Map(location=[37.608507, -110.005518], zoom_start=12.5)
+
+heat_data = [[row['lat'], row['long'], row['Shrub']] for index, row in df_1980.iterrows()]
+
+HeatMap(heat_data).add_to(m)
+m
+```
+
+#### 2018
+
+```{python}
+from folium.plugins import HeatMap
+df_2018 = historic_df[historic_df['year'] == 2018]
+m = folium.Map(location=[37.608507, -110.005518], zoom_start=12.5)
+
+heat_data = [[row['lat'], row['long'], row['Shrub']] for index, row in df_2018.iterrows()]
+
+HeatMap(heat_data).add_to(m)
+m
+```
+
+#### 2023
+
+```{python}
+from folium.plugins import HeatMap
+df_2023 = recent_df[recent_df['year'] == 2023]
+m = folium.Map(location=[37.608507, -110.005518], zoom_start=12.5)
+
+heat_data = [[row['lat'], row['long'], row['Shrub']] for index, row in df_2023.iterrows()]
+
+HeatMap(heat_data).add_to(m)
+m
+
+```
+
+#### Temperature Over Time by Sample Location
+
+```{python}
+total_df = pd.concat([historic_df, recent_df])
+
+non_null_df = total_df[['year', 'long', 'lat', 'T_Annual']]
+non_null_df = non_null_df.dropna().sort_values(by='year')
+
+
+min_value = non_null_df['T_Annual'].min()
+max_value = non_null_df['T_Annual'].max()
+
+range_color = (min_value, max_value)
+
+fig = px.scatter_mapbox(non_null_df, lat="lat", lon="long", color="T_Annual",
+                  color_continuous_scale="balance", size_max=15, zoom=11,
+                  title='Annual Temperature in Southeastern Utah Group National Parks from 1980-2023',
+                  mapbox_style="open-street-map", animation_frame="year", range_color = range_color,
+                  labels={'T_Annual': 'Temperature °C', 'year': 'Year',
+                  'lat': 'Latitude', 'long': 'Longitude'})
+fig.update_layout(
+    paper_bgcolor='#C9E4CA',
+    font=dict(family="Georgia", color="black")
+)
+
+fig.show()
+```
 
 ### Decrease in Frost Days 
 
@@ -24,75 +123,70 @@ The average temperature over time.
 
 ![](images/plant_decrease.png)
 
-### Shrubs in 1980
-
+#### Shrubs Over Time
 ```{python}
-#| echo: false
-#| warning: false
-import pandas as pd
-import folium
-import matplotlib as plt
-import matplotlib
-import requests 
-import ssl
-_create_unverified_https_context = ssl._create_unverified_context
-ssl._create_default_https_context = _create_unverified_https_context
-import numpy as np
+non_null_df = total_df[['year', 'long', 'lat', 'Shrub']]
+non_null_df = non_null_df.dropna().sort_values(by='year')
 
-historic_df = pd.read_csv('../data/NABR_historic.csv') 
-recent_df = pd.read_csv('../data/nearterm_data_2020-2024.csv') 
+min_value = non_null_df['Shrub'].min()
+max_value = non_null_df['Shrub'].max()
 
-df_1980 = historic_df[historic_df['year'] == 1980]
+range_color = (min_value, max_value)
 
-cmap = plt.colormaps['Greens']
+fig = px.scatter_mapbox(non_null_df, lat="lat", lon="long", color="Shrub",
+                  color_continuous_scale="greens", size_max=15, zoom=11,
+                  title='Annual Number of Shrubs in Southeastern Utah Group National Parks from 1980-2023',
+                  mapbox_style="open-street-map", animation_frame="year", range_color = range_color,
+                  labels={'Shrub': 'Shrub Count', 'year': 'Year',
+                  'lat': 'Latitude', 'long': 'Longitude'})
+fig.update_layout(
+    paper_bgcolor='#C9E4CA',
+    font=dict(family="Georgia", color="black"))
 
-norm = matplotlib.colors.Normalize(vmin=historic_df['Shrub'].min(), vmax=historic_df['Shrub'].max())
-
-df_1980['color'] = df_1980['Shrub'].apply(lambda x: cmap(norm(x)))
-
-def rgba_to_hex(rgba):
-    return '#' + ''.join([f'{int(255 * c):02x}' for c in rgba[:3]])
-
-df_1980['color'] = df_1980['color'].apply(rgba_to_hex)
-
-state_geo = requests.get(
-    "https://raw.githubusercontent.com/python-visualization/folium-example-data/main/us_states.json"
-).json()
-state_data = pd.read_csv(
-    "https://raw.githubusercontent.com/python-visualization/folium-example-data/main/us_unemployment_oct_2012.csv"
-)
-
-m = folium.Map(location=[37.608507, -110.005518], zoom_start=12.5)
-
-
-for i in range(df_1980.shape[0]):
-    if not np.isnan(df_1980.iloc[i].Shrub):
-      folium.CircleMarker(location=[df_1980.iloc[i].lat,df_1980.iloc[i].long], radius= 8,
-                        color=df_1980.iloc[i].color, fill_color = df_1980.iloc[i].color,
-                        fill = True, fill_opacity=0.7, tooltip=df_1980.iloc[i].Shrub).add_to(m)
-m
+fig.show()
 ```
-
-<!-- ```{python}
-#| warning: false
-df_2023 = recent_df[recent_df['year'] == 2023]
-df_2023['color'] = df_2023['Shrub'].apply(lambda x: cmap(norm(x)))
-
-df_2023['color'] = df_2023['color'].apply(rgba_to_hex)
-
-m = folium.Map(location=[37.608507, -110.005518], zoom_start=12.5)
-
-for i in range(df_2023.shape[0]):
-    if not np.isnan(df_2023.iloc[i].Shrub):
-      folium.CircleMarker(location=[df_2023.iloc[i].lat,df_2023.iloc[i].long], radius= 8,
-                        color=df_2023.iloc[i].color, fill_color = df_2023.iloc[i].color,
-                        fill = True, fill_opacity=0.7, tooltip=df_2023.iloc[i].Shrub).add_to(m)
-
-m
-``` -->
 
 ### Increase in Bare Land
 
 ![](images/bare.png)
 
+### Bare Land Over Time
 
+```{python}
+non_null_df = total_df[['year', 'long', 'lat', 'Bare']]
+non_null_df = non_null_df.dropna().sort_values(by='year')
+
+min_value = non_null_df['Bare'].min()
+max_value = non_null_df['Bare'].max()
+
+range_color = (min_value, max_value)
+
+fig = px.scatter_mapbox(non_null_df, lat="lat", lon="long", color="Bare",
+                  color_continuous_scale="Oranges", size_max=15, zoom=11,
+                  title='Annual Bare Land Percentage in Southeastern Utah Group National Parks from 1980-2023',
+                  mapbox_style="open-street-map", animation_frame="year", range_color = range_color,
+                  labels={'Bare': 'Percentage of Bare Land', 'year': 'Year',
+                  'lat': 'Latitude', 'long': 'Longitude'})
+fig.update_layout(
+    paper_bgcolor='#C9E4CA',
+    plot_bgcolor = 'green',
+    font=dict(family="Georgia", color="black"))
+
+fig.show()
+```
+
+#### Relationship Between Bare Land and Summer Temperature
+
+#### Relationship Between Bare Land and Non-Dry Summer Soil Availability
+
+
+### Slight Increase in Tree Canopy
+
+Demonstration of vegetation resilience.
+
+![](images/canopy.png)
+
+
+## Recommendations
+
+Watering soil if possibile. Bare land is negatively associated with Non-Dry Soil Summer Availability. 
