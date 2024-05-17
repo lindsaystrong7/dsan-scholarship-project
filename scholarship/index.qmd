@@ -9,6 +9,8 @@ format:
 
 ## Introduction
 
+This project analyzes the impact of climate factors on various vegetation types across different seasons using NOAA's (National Oceanic and Atmospheric Administration) climate data for the Four Corners region and offers recommendations. As temperatures begin to rise across the world and climate change impacts start to show, it is important for Southeastern Utah National Park stakeholders to be aware of these impacts in order to attempt to counteract them. This project will demonstrate the changes in the climate and vegetation as well as the relationship between them. 
+
 ```{python}
 import pandas as pd
 import matplotlib as plt
@@ -24,7 +26,7 @@ recent_df = recent_df[recent_df['year'] != 2024]
 
 ## Data
 
-![](images/samples.png)
+The data used in this project comes from historical data from the US Geological Survey (USGS). There were two datasets used, one with historic data from 1980-2018 and the other with near-term data from 2021-2024. The first five rows of both dataframes are shown below. Both datasets include the same variables except that representative concentration pathway (RCP) column in the dataset from 1980-2018 includes the string 'historical' while the RCP column in the near-term data includes numerical values for predictions of the concentration of green house gases in the atmosphere. More information on the specific variable names and the entire dataset can be found by following the Code tab in the navbar and navigating to the data folder in the Github repository.
 
 ### Historic Data 
 ```{python}
@@ -37,16 +39,43 @@ historic_df.head()
 recent_df.head()
 ```
 
+# 
+
+It is important to note the sample size in each of the datasets. As shown in the histogram below, there are many more samples in the near-term data compared to the historic data. Both datasets have similar amounts of samples by year, indicating that the same locations were sampled roughly the same number of times. It is necessary to keep this in mind as we explore trends from 1980-2024, as the data from 2021-2024 includes many more samples than the previous years. Additionally, we can see that there is no data from 2019 and 2020. It is important to keep this in mind as we look at the timeline as a whole.  
+
+![](images/samples.png)
+
+
 ## Insights and Trends
 
+We will first look at the changes in the climate followed by the changes in the vegetation types and the relationships between the climate changes and vegetation changes.
+
+
 ### The Rise in Temperature
-The average temperature over time.
+
+The average temperature has risen over time in the Four Corners region. By taking the average annual temperature across all sample locations, we can see the upward trend in the line plot below. The peak average annual temperature occurs in 2018 with 12.9 degrees celsius. In 1980, the annual average temperature was 10.8 degrees celsius. From 1980-2017, we can see flucuations in the annual average temperature. Following 2018, the temperature in 2021-2024 does not flucuate below 11.7 degrees celsius. This indicates an alarming rise in the climate temperature.
 
 ![](images/average_temp.png)
 
+#### Temperature Across Seasons
+
+In addition to looking at the average temperature across the entire year, we can compare the winter and summer temperature data. In the visualization below, we can observe the similar fluxations in the winter and summer temperatures from 1980-2017 as in the annual temperature. From 2017-2024, we see a steady increase in temperature indicating a more permanent rising temperature in the winter, summer, and average annual temperatures.
+
+![](images/seasons_temp.png)
+
 #### Summer Temperature
 
+Compared to the winter and annual temperatures, the summer average temperature has risen the most rapidly. By computing a correlation matrix, summer temperature had a 0.474 correlation with the year, followed by annual temperature with a 0.473 correlation and winter temperature with a 0.124 correlation. These statistics show that the summer temperature has risen the most over time compared to the winter and annual temperatures. Looking at the summer average annual temperature on its own, we can see rising temperature fluxations from 1980-2017 and a drastic incline from 2018-2024.
+
+![](images/summer_temp.png)
+
+#### Temperature Across Locations
+
+We can further see the rise in temperature by looking at the temperature by sample location. The heatmaps show the locations where the temperature is the highest, indicated by red colors, and show lower temperature with blue colors. We will compare three different time periods to show the rise and expansion of temperature over time.
+
 #### 1980
+
+In 1980, we see that the hot spots follow the White Canyon River. There are also hot spots in the southeastern region of the area.  
 
 ```{python}
 from folium.plugins import HeatMap
@@ -61,6 +90,8 @@ m
 
 #### 2018
 
+In 2018, the patterns are very similar to 1980. The hot spots follow the river and some spots in the southeastern region.
+
 ```{python}
 from folium.plugins import HeatMap
 df_2018 = historic_df[historic_df['year'] == 2018]
@@ -73,6 +104,8 @@ m
 ```
 
 #### 2023
+
+In 2023, we see larger hot spots among the White Canyon River appear larger and darker, suggesting a temperature increase in this region.
 
 ```{python}
 from folium.plugins import HeatMap
@@ -87,6 +120,8 @@ m
 ```
 
 #### Temperature Over Time by Sample Location
+
+We can use this interactive visualization to look at the annual temperature samples across the time period and for specific years. We see the increase of red dots over time, suggesting an increase in temperature. There is also an increase of samples in the near-term data from 2021-2024. 
 
 ```{python}
 total_df = pd.concat([historic_df, recent_df])
@@ -116,14 +151,32 @@ fig.show()
 
 ### Decrease in Frost Days 
 
+Similar to an increase in temperature, there has been a decrease in the number of frost days over time as shown in the line plot below. Similar to temperature, we can see flucuations in high frost years and low frost years until a sharp decrease in recent years.
+
 ![](images/frost_days.png)
 
+### Decrease in Summmer Evaporation
+
+The decrease in summer evaporation is shown below through the trend line in the scatter plot. We can also see the cluster of near-term data together, 2021-2024, which contrasts the flucuations of previous years.
+
+![](images/evap.png)
+
+### Decrease in the Water Soil Content in Fall, Winter, and Spring Over Time
+
+When comparing the water soil content by season over the time period, we see the biggest decrease in the Spring, followed by the fall and winter. There is a very slight increase of water soil content in the summer over time. 
+
+![](images/vwc_seasons.png)
 
 ### Decrease in Shrubs, Plant Litter, and Herbs
+
+The change in vegetation across seasons can be seen with the following visualizations. There has been a decrease in the amount of shrubs, plant litter, and herbs as shown in the decrease of percentage of these vegetation types across sample locations. The amount of shrubs has decreased the most followed by herbs and plant litter. These changes over time show the impact of climate change on vegetation in the Four Corners region. 
 
 ![](images/plant_decrease.png)
 
 #### Shrubs Over Time
+
+As Shrubs had the largest change over time, we will look at shrub percentages by location over time. Even though there are a few locations that show change, there are many locations that remain unchanged. This shows the vegetation resilience of shrubs despite changes in the climate.
+
 ```{python}
 non_null_df = total_df[['year', 'long', 'lat', 'Shrub']]
 non_null_df = non_null_df.dropna().sort_values(by='year')
@@ -146,11 +199,27 @@ fig.update_layout(
 fig.show()
 ```
 
+#### Relationship Between Spring Soil Water and Plant Litter
+
+We can see that there is a positive relationship between spring soil water and plant litter across locations by year. Meaning that the more water in the soil there is in the spring, the more plant litter. The less soil water, then there will be less plant litter. As the spring soil water is decreasing over time, this could explain the reduction in plant litter over time. We will only look at individual years to exclude the time variable as we know that plant litter decreases overtime as shown in the plots above.
+
+![](images/litter_water.png)
+
+#### Relationship Between Spring Soil Water and Shrubs
+
+There is also a positive relationship between the amount of water in the spring soil and shrubs. Similar to plant litter, more water is associated with more shrubs. As spring soil water has decreased over time, we can hypothesize that the decrease in water has decreased the amount of shrubs in the Four Corners region.
+
+![](images/shrub_water.png)
+
 ### Increase in Bare Land
+
+In addition to the decrease in vegetation, there has been an increase in bare land shown through average bare land percentage. Interestingly, there seems to be a steady flucuating increase of bare land from 1980-early 2000s followed by more steady flucuations. 
 
 ![](images/bare.png)
 
-### Bare Land Over Time
+#### Bare Land Over Time
+
+We can see the large amount of bare land over time. Similar to shrub counts, only a few locations have changes in their amounts of bare land. 
 
 ```{python}
 non_null_df = total_df[['year', 'long', 'lat', 'Bare']]
@@ -177,16 +246,33 @@ fig.show()
 
 #### Relationship Between Bare Land and Summer Temperature
 
+Using one year, 1980, to keep the time variable constant, we see that bare land and temperature are positively correlated, meaning higher temperatures indicate more bare land and lower temperatures indicate less bare land. We can also see that there are more samples with higher temperatures compared to lower temperatures.
+
+![](images/bare_summer.png)
+
+#### Relationship Between Bare Land and Spring Soil Water
+
+We can see a negatively correlated relationship between the water in the spring soil and the percentage of bare land. The samples appear to be evenly distributed across both variables.
+
+![](images/bare_water.png)
+
 #### Relationship Between Bare Land and Non-Dry Summer Soil Availability
 
+We can see that there is a negative relationship between bare land percentage and non-dry summer soil availability. This indicates that the less water in the soil, which decreases over time as shown previously, increases the amount of bare land. 
+
+![](images/swa_bare.png)
 
 ### Slight Increase in Tree Canopy
 
-Demonstration of vegetation resilience.
+There is a slight increase in tree canopy over time which also demonstrates vegetation resilience. When segregating the historical and near-term data, we can see that there was an increase in tree canopy until 2018 but there is a recent decrease in tree canopy. This could suggest that the impacts of climate change have taken longer to impact the trees. 
 
 ![](images/canopy.png)
 
 
 ## Recommendations
 
-Watering soil if possibile. Bare land is negatively associated with Non-Dry Soil Summer Availability. 
+The two biggest problems with climate change in these parks appear to be the temperature increase and decrease in the amount of water in the environment. It is difficult to conclude if whether one is causing the other as both have negative impacts on the vegetation. My recommendation would be to combat the reduction of water in the environment as the increase in temperature is likely causing the reduction of water and reducing the temperature in the national parks does not seem feasible. 
+
+In order to counteract the reduction of water, park rangers could focus on watering the soil of these regions, specifically during the spring. Watering in the spring is most important as that is when it is decreasing most rapidly. Even though there is an increase in tree canopy overall over time, in the most recent years there has been a decrease in tree canopy so planting trees could be helpful to combat this.
+
+

@@ -1,5 +1,31 @@
 ---
-title: "About"
+title: "Citations"
 ---
 
-About this site
+The code and information sources that I used are linked below:
+
+RCP Background knowledge:
+[https://coastadapt.com.au/sites/default/files/infographics/15-117-NCCARFINFOGRAPHICS-01-UPLOADED-WEB%2827Feb%29.pdf](https://coastadapt.com.au/sites/default/files/infographics/15-117-NCCARFINFOGRAPHICS-01-UPLOADED-WEB%2827Feb%29.pdf)
+
+Folium Heat Map:
+[https://python-visualization.github.io/folium/latest/user_guide/plugins/heatmap.html](https://python-visualization.github.io/folium/latest/user_guide/plugins/heatmap.html)
+
+Random Color Palette Generator From Canva:
+[https://coolors.co/c9e4ca-87bba2-55828b-3b6064-364958](https://coolors.co/c9e4ca-87bba2-55828b-3b6064-364958)
+
+Quarto Hiding Code for HTML:
+[https://quarto.org/docs/reference/formats/html.html](https://quarto.org/docs/reference/formats/html.html)
+
+CSS Code for changing background color:
+[https://www.w3schools.com/css/css_background.asp](https://www.w3schools.com/css/css_background.asp)
+
+Plotly Express Tile Map and Timeline Starter Code:
+[https://plotly.com/python/plotly-express/](https://plotly.com/python/plotly-express/)
+
+Changing Quarto NavBar Color:
+[https://stackoverflow.com/questions/76094373/navbar-text-color-quarto](https://stackoverflow.com/questions/76094373/navbar-text-color-quarto)
+
+
+
+
+
